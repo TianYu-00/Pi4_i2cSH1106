@@ -21,11 +21,17 @@ Optionally, to improve performance, increase the I2C baudrate from the default o
 Then reboot.
 
 Next, add your user to the i2c group and install i2c-tools:
-`sudo usermod -a -G i2c pi`
-`sudo apt-get install i2c-tools`
+```
+sudo usermod -a -G i2c pi
+```
+```
+sudo apt-get install i2c-tools
+```
 
 Check to see if it works
-`i2cdetect -y 1`
+```
+i2cdetect -y 1
+```
 
 Check that the device is communicating properly (if using a rev.1 board, use 0 for the bus, not 1) and determine its address using i2cdetect:
 Should be something similar to this:
@@ -42,7 +48,9 @@ $ i2cdetect -y 1
   70: -- -- -- -- -- -- -- --
 ```
 Enabling The SPI Interface:
-`sudo raspi-config`
+```
+sudo raspi-config
+```
 Interfacing Options - Enable SPI -> Save that and reboot
 
 
@@ -51,24 +59,36 @@ Check to see if it works
 `lsmod | grep spi`
 
 Then add your user to the spi and gpio groups:
-`sudo usermod -a -G spi,gpio pi`
+```
+sudo usermod -a -G spi,gpio pi
+```
 Log out and back in again to ensure that the group permissions are applied successfully.
 
 ## Now that we have all those done were ready to install.
 This will normally retrieve all of the dependencies luma.oled requires and install them automatically.
-`sudo -H pip3 install --upgrade luma.oled`
+```
+sudo -H pip3 install --upgrade luma.oled
+```
 
 ### Installing Dependencies
 If pip is unable to automatically install its dependencies you will have to add them manually. To resolve the issues you will need to add the appropriate development packages to continue.
 
 If you are using Raspberry Pi OS you should be able to use the following commands to add the required packages:
-`sudo apt-get update`
-`sudo apt-get install python3 python3-pip python3-pil libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 -y`
-`sudo -H pip3 install luma.oled`
+```
+sudo apt-get update
+```
+```
+sudo apt-get install python3 python3-pip python3-pil libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 -y
+```
+```
+sudo -H pip3 install luma.oled
+```
 
 luma.oled uses hardware interfaces that require permission to access. After you have successfully installed luma.oled you may want to add the user account that your luma.oled program will run as to the groups that grant access to these interfaces.:
 
-`sudo usermod -a -G spi,gpio,i2c pi`
+```
+sudo usermod -a -G spi,gpio,i2c pi
+```
 Replace pi with the name of the account you will be using.
 
 
@@ -97,7 +117,10 @@ with canvas(device) as draw:
 Or try out my script that shows the Temp, CPU Usage, Memory Usage, and Pi's public IP:
 You could also just download this script straight from my repo in the same directory that this md file is.
 in order to use this script you need to first install netifaces.
-`pip install luma.oled netifaces`
+```
+pip install luma.oled netifaces
+```
+
 After that create a python script and try it out urself.
 ```
 import time
@@ -150,10 +173,14 @@ if __name__ == '__main__':
 
 ```
 To automatically run this script you can try and add it to ur crontab
-`crontab -e`
+```
+crontab -e
+```
 if its ur firsttime ever running this command it will show to choose ur editor. Just choose the 1st one.
 Now that were in, go all the way down to the bottom of a new line, add this line of code to make it run automatically after reboot.
-`@reboot python3 <directoryOfTheScript>`
+```
+@reboot python3 <directoryOfTheScript>
+```
 for example
 `@reboot python3 /home/pi/statdisplay.py`
 `statdisplay.py` is ur python script file name.
@@ -163,7 +190,9 @@ press Enter (to say you want to overwrite existing file). then
 press ctrl x (to exit nano)
 
 when its saved, do a reboot and check it out.
-`sudo reboot`
+```
+sudo reboot
+```
 
 
 
