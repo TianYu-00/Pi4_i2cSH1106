@@ -1,7 +1,7 @@
 # Header
 
-<img src="https://github.com/TianYu-00/RPi4_SomeUsefulStuff/blob/main/SH1106_i2cDisplay_RPi4/i2c_oled_128x64_raspberry_pi_wiring.png"/>
-<img src="https://github.com/TianYu-00/RPi4_SomeUsefulStuff/blob/main/SH1106_i2cDisplay_RPi4/SDA_SCL_Diagram.png" />
+<img src="https://github.com/TianYu-00/Pi4_i2cSH1106/blob/main/images/i2c_oled_128x64_raspberry_pi_wiring.png"/>
+<img src="https://github.com/TianYu-00/Pi4_i2cSH1106/blob/main/images/SDA_SCL_Diagram.png" />
 
 
 Below instruction is copied from https://luma-oled.readthedocs.io/en/latest/install.html. Some contents are edited by me to better understand/follow.
